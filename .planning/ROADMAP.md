@@ -30,12 +30,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Executing a plan produces atomic git commits with clean history (one commit per task)
   4. STATE.md persists across sessions and correctly tracks phase/plan position
   5. XML-structured plan format is parsed and executed by agent workflows
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md -- Scaffold project structure and port foundational TypeScript modules
+- [ ] 01-02-PLAN.md -- Port remaining lib modules, CLI router, and build CJS bundle
+- [ ] 01-03-PLAN.md -- Port GSD commands to plugin skills and agents with markdown assets
+- [ ] 01-04-PLAN.md -- npm install script and validation test suite
 
 ### Phase 2: Complexity Calibration
 **Goal**: The system automatically detects task complexity and scales planning depth, research inclusion, and verification rigor without user input
@@ -107,7 +108,7 @@ Phases execute in numeric order: 1 -> 2 -> 3/4 (parallelizable) -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/3 | Not started | - |
+| 1. Foundation | 0/4 | Not started | - |
 | 2. Complexity Calibration | 0/2 | Not started | - |
 | 3. Front-Loaded Interaction | 0/2 | Not started | - |
 | 4. Dependency Graph Engine | 0/3 | Not started | - |
