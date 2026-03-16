@@ -6,9 +6,9 @@
  * to the user's local plugins directory.
  *
  * Usage:
- *   npx gsdr@latest          # Install plugin
- *   npx gsdr@latest --help   # Show usage
- *   npx gsdr@latest --uninstall  # Remove plugin
+ *   npx @leonaffi/gsdr@latest          # Install plugin
+ *   npx @leonaffi/gsdr@latest --help   # Show usage
+ *   npx @leonaffi/gsdr@latest --uninstall  # Remove plugin
  */
 
 'use strict';
@@ -36,9 +36,9 @@ function printHelp() {
 GSDR - GSD Reloaded: Autonomous spec-driven development for Claude Code
 
 Usage:
-  npx gsdr@latest            Install GSDR plugin
-  npx gsdr@latest --help     Show this help message
-  npx gsdr@latest --uninstall  Remove GSDR plugin
+  npx @leonaffi/gsdr@latest            Install GSDR plugin
+  npx @leonaffi/gsdr@latest --help     Show this help message
+  npx @leonaffi/gsdr@latest --uninstall  Remove GSDR plugin
 
 The plugin is installed to:
   ${TARGET_DIR}
