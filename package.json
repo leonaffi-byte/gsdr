@@ -1,0 +1,33 @@
+{
+  "name": "gsdr",
+  "version": "1.0.0",
+  "description": "GSD Reloaded - Autonomous spec-driven development for Claude Code",
+  "bin": {
+    "gsdr": "bin/install.js"
+  },
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "bin",
+    ".claude-plugin",
+    "skills",
+    "agents",
+    "hooks",
+    "templates",
+    "references",
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "esbuild": "^0.24.0",
+    "@types/node": "^18.0.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

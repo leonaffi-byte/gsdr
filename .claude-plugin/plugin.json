@@ -1,0 +1,8 @@
+{
+  "name": "gsdr",
+  "description": "GSD Reloaded - Autonomous spec-driven development for Claude Code",
+  "version": "1.0.0",
+  "author": {
+    "name": "GSDR"
+  }
+}
