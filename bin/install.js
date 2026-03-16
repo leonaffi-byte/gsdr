@@ -18,7 +18,9 @@ const path = require('path');
 const os = require('os');
 
 const PLUGIN_NAME = 'gsdr';
-const PLUGIN_ID = 'gsdr@local';
+const MARKETPLACE_NAME = 'gsdr-marketplace';
+const PLUGIN_ID = PLUGIN_NAME + '@' + MARKETPLACE_NAME;
+const GITHUB_REPO = 'leonaffi-byte/gsdr';
 const CLAUDE_DIR = path.join(os.homedir(), '.claude');
 const TARGET_DIR = path.join(CLAUDE_DIR, 'plugins', 'local', PLUGIN_NAME);
 const SOURCE_DIR = path.join(__dirname, '..');
@@ -100,6 +102,8 @@ function registerPlugin() {
 
   // Register in installed_plugins.json
   const installed = readJSON(INSTALLED_PLUGINS_FILE) || { version: 2, plugins: {} };
+  // Clean up old gsdr@local entry if present
+  delete installed.plugins['gsdr@local'];
   installed.plugins[PLUGIN_ID] = [
     {
       scope: 'user',
@@ -111,27 +115,45 @@ function registerPlugin() {
   ];
   writeJSON(INSTALLED_PLUGINS_FILE, installed);
 
-  // Enable in settings.json
+  // Enable in settings.json and register marketplace
   const settings = readJSON(SETTINGS_FILE) || {};
   if (!settings.enabledPlugins) {
     settings.enabledPlugins = {};
   }
+  delete settings.enabledPlugins['gsdr@local'];
   settings.enabledPlugins[PLUGIN_ID] = true;
+
+  if (!settings.extraKnownMarketplaces) {
+    settings.extraKnownMarketplaces = {};
+  }
+  settings.extraKnownMarketplaces[MARKETPLACE_NAME] = {
+    source: {
+      source: 'github',
+      repo: GITHUB_REPO,
+    },
+  };
   writeJSON(SETTINGS_FILE, settings);
 }
 
 function unregisterPlugin() {
   // Remove from installed_plugins.json
   const installed = readJSON(INSTALLED_PLUGINS_FILE);
-  if (installed && installed.plugins && installed.plugins[PLUGIN_ID]) {
+  if (installed && installed.plugins) {
     delete installed.plugins[PLUGIN_ID];
+    delete installed.plugins['gsdr@local'];
     writeJSON(INSTALLED_PLUGINS_FILE, installed);
   }
 
   // Remove from settings.json
   const settings = readJSON(SETTINGS_FILE);
-  if (settings && settings.enabledPlugins && settings.enabledPlugins[PLUGIN_ID]) {
-    delete settings.enabledPlugins[PLUGIN_ID];
+  if (settings) {
+    if (settings.enabledPlugins) {
+      delete settings.enabledPlugins[PLUGIN_ID];
+      delete settings.enabledPlugins['gsdr@local'];
+    }
+    if (settings.extraKnownMarketplaces) {
+      delete settings.extraKnownMarketplaces[MARKETPLACE_NAME];
+    }
     writeJSON(SETTINGS_FILE, settings);
   }
 }
