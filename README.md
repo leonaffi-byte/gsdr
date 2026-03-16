@@ -1,33 +1,36 @@
-<p align="center">
-  <h1 align="center">GSDR</h1>
-  <p align="center">
-    <strong>Autonomous spec-driven development for Claude Code</strong>
-  </p>
-  <p align="center">
-    Front-load 10 minutes of questions. Walk away. Come back to verified, working code.
-  </p>
-  <p align="center">
-    <a href="https://www.npmjs.com/package/@leonaffi/gsdr"><img src="https://img.shields.io/npm/v/@leonaffi/gsdr?style=flat-square&color=cb3837" alt="npm version"></a>
-    <a href="https://github.com/leonaffi-byte/gsdr/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license"></a>
-    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen?style=flat-square" alt="node version"></a>
-  </p>
-</p>
+<div align="center">
+
+```
+ ██████╗ ███████╗██████╗ ██████╗
+██╔════╝ ██╔════╝██╔══██╗██╔══██╗
+██║  ███╗███████╗██║  ██║██████╔╝
+██║   ██║╚════██║██║  ██║██╔══██╗
+╚██████╔╝███████║██████╔╝██║  ██║
+ ╚═════╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝
+       GET SHIT DONE. REBRANDABLE.
+```
+
+**Answer questions for 10 minutes. Walk away. Come back to working code.**
+
+<a href="https://www.npmjs.com/package/@leonaffi/gsdr"><img src="https://img.shields.io/npm/v/@leonaffi/gsdr?style=flat-square&color=cb3837" alt="npm version"></a>
+<a href="https://github.com/leonaffi-byte/gsdr/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license"></a>
+<a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen?style=flat-square" alt="node version"></a>
+
+</div>
 
 ---
 
 ## What is GSDR?
 
-GSDR (GSD Reloaded) is a **Claude Code plugin** that turns Claude into an autonomous build system. Give it a project idea, answer a few questions, and it handles everything else: research, planning, execution, verification, and auto-fixing — without human babysitting.
-
-It's a fork of [Get Shit Done](https://github.com/gsd-build/get-shit-done) rebuilt from the ground up in TypeScript, optimized for autonomy.
+GSDR is a Claude Code plugin that builds your entire project while you do literally anything else. Tell it what you want, answer a few questions, and walk away. It handles research, planning, execution, verification, and auto-fixing — no babysitting required.
 
 ### The Problem
 
-AI coding assistants need constant supervision. You approve plans, review each step, verify results, and fix things when they break. You're a babysitter, not a developer.
+AI coding assistants need babysitting. You approve plans, review steps, verify results, fix breakage. You're not developing — you're a glorified supervisor.
 
 ### The Solution
 
-GSDR front-loads all human interaction into a single **10-15 minute session**, then runs fully autonomously:
+GSDR front-loads everything into 10 minutes of questions, then runs fully autonomous:
 
 ```
 You (10 min)          GSDR (autonomous)                    You (review)
@@ -166,7 +169,7 @@ GSDR provides 31 slash commands as Claude Code skills:
 |---------|-------------|
 | `/gsdr:plan-phase` | Create detailed phase plan with verification loop |
 | `/gsdr:execute-phase` | Execute plans with wave-based parallelization |
-| `/gsdr:quick` | Execute a quick task with GSD guarantees |
+| `/gsdr:quick` | Execute a quick task with GSDR guarantees |
 | `/gsdr:research-phase` | Research how to implement a phase |
 
 ### Verification & Debugging
@@ -328,5 +331,5 @@ Contributions are welcome! Please open an issue first to discuss what you'd like
 ---
 
 <p align="center">
-  <sub>Built autonomously with GSDR itself.</sub>
+  <sub>Built autonomously with GSDR itself. Evolved from <a href="https://github.com/gsd-build/get-shit-done">Get Shit Done</a>.</sub>
 </p>

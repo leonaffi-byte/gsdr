@@ -11,6 +11,8 @@ Validate `.planning/` directory integrity and report actionable issues. Checks f
 
 <required_reading>
 Read all files referenced by the invoking prompt's execution_context before starting.
+
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
 </required_reading>
 
 <process>
@@ -47,9 +49,10 @@ Parse JSON output:
 <step name="format_output">
 **Format and display results:**
 
+Display a stage banner. Pick randomly from the VERIFYING banner pool in @references/ui-brand.md (health check context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR Health Check
+ {selected banner text} (HEALTH CHECK)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Status: HEALTHY | DEGRADED | BROKEN
@@ -65,6 +68,7 @@ Errors: N | Warnings: N | Info: N
 ```
 
 **If errors exist:**
+Display each error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the error section header. Individual error descriptions and fix steps remain crystal clear -- humor in header ONLY.
 ```
 ## Errors
 

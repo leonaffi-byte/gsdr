@@ -5,11 +5,13 @@ $ErrorActionPreference = "Stop"
 
 function Write-Info($msg)  { Write-Host ">>> " -ForegroundColor Cyan -NoNewline; Write-Host $msg }
 function Write-Ok($msg)    { Write-Host ">>> " -ForegroundColor Green -NoNewline; Write-Host $msg }
-function Write-Fail($msg)  { Write-Host ">>> " -ForegroundColor Red -NoNewline; Write-Host $msg; exit 1 }
+function Write-Fail($msg)  { Write-Host ">>> " -ForegroundColor Red -NoNewline; Write-Host "Well that didn't work."; Write-Host ">>> " -ForegroundColor Red -NoNewline; Write-Host $msg; exit 1 }
 
 Write-Host ""
-Write-Host "  GSDR - GSD Reloaded" -ForegroundColor White
-Write-Host "  Autonomous spec-driven development for Claude Code"
+Write-Host "  ▄▄ ▄▄▄ ▄▄▄ ▄▄▄" -ForegroundColor White
+Write-Host "  █▌ ▀▄▄ █▄▀ █▄▀" -ForegroundColor White
+Write-Host "  ▀▀ ▄▄▀ ▀ ▀ ▀ ▀" -ForegroundColor White
+Write-Host "  Get shit done. Autonomously." -ForegroundColor Cyan
 Write-Host ""
 
 # Check Node.js
@@ -33,22 +35,20 @@ if (-not $npmPath) {
 }
 
 # Install globally
-Write-Info "Installing @leonaffi/gsdr via npm..."
+Write-Info "Installing GSDR... (patience, grasshopper)"
 npm install -g @leonaffi/gsdr
 if ($LASTEXITCODE -ne 0) { Write-Fail "npm install failed" }
 
 # Run installer to set up Claude Code plugin
-Write-Info "Setting up Claude Code plugin..."
+Write-Info "Wiring into Claude Code..."
 gsdr
 if ($LASTEXITCODE -ne 0) { Write-Fail "Plugin setup failed" }
 
 Write-Host ""
-Write-Ok "GSDR installed successfully!"
+Write-Ok "GSDR is locked and loaded."
 Write-Host ""
-Write-Host "  Next steps:"
-Write-Host "  1. Start Claude Code with the plugin:"
-Write-Host "     claude --plugin-dir $env:USERPROFILE\.claude\plugins\local\gsdr"
+Write-Host "  Next up:" -ForegroundColor White
+Write-Host "  Start Claude Code and run:"
 Write-Host ""
-Write-Host "  2. Or add to your Claude Code settings, then run:"
-Write-Host "     /gsdr:new-project"
+Write-Host "    /gsdr:new-project" -ForegroundColor Cyan
 Write-Host ""

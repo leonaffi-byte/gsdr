@@ -16,6 +16,28 @@ After UAT finds gaps, spawn one debug agent per gap. Each agent investigates aut
 Orchestrator stays lean: parse gaps, spawn agents, collect results, update UAT.
 </purpose>
 
+<required_reading>
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
+</required_reading>
+
+<debug_banners>
+Display a stage banner for debug sessions. Pick randomly from this inline debug pool:
+
+| # | Banner Text |
+|---|-------------|
+| 1 | `GSDR > DETECTIVE MODE` |
+| 2 | `GSDR > HUNTING BUGS` |
+| 3 | `GSDR > CSI: CODEBASE` |
+| 4 | `GSDR > FOLLOWING THE TRAIL` |
+
+Format:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ {selected debug banner text}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+</debug_banners>
+
 <paths>
 DEBUG_DIR=.planning/debug
 
@@ -175,10 +197,10 @@ node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" commit "docs({phase_num}): add
 <step name="report_results">
 **Report diagnosis results and hand off:**
 
-Display:
+Display completion:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► DIAGNOSIS COMPLETE
+ GSDR > DIAGNOSIS COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 | Gap (Truth) | Root Cause | Files |
@@ -205,6 +227,7 @@ Agents only diagnose—plan-phase --gaps handles fixes (no fix application).
 
 <failure_handling>
 **Agent fails to find root cause:**
+- Display error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the header. Description and fix steps remain crystal clear.
 - Mark gap as "needs manual review"
 - Continue with other gaps
 - Report incomplete diagnosis
@@ -214,7 +237,7 @@ Agents only diagnose—plan-phase --gaps handles fixes (no fix application).
 - Can resume with /gsdr:debug
 
 **All agents fail:**
-- Something systemic (permissions, git, etc.)
+- Display error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the header. Description: "Something systemic happened." Fix: "Check permissions, git, environment."
 - Report for manual investigation
 - Fall back to plan-phase --gaps without root causes (less precise)
 </failure_handling>

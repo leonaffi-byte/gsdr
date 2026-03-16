@@ -1,11 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * GSDR Tools -- CLI utility for GSDR workflow operations
- * Ported from GSD gsd-tools.cjs to TypeScript.
- *
- * Usage: node gsdr-tools.cjs <command> [args] [--raw] [--cwd <path>]
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

@@ -1,7 +1,3 @@
-/**
- * Init -- Compound init commands for workflow bootstrapping
- * Ported from GSD init.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

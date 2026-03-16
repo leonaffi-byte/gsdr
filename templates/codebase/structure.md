@@ -123,16 +123,17 @@ Template for `.planning/codebase/STRUCTURE.md` - captures physical file organiza
 ## Directory Layout
 
 ```
-get-shit-done/
+gsdr/
 ├── bin/                # Executable entry points
 ├── commands/           # Slash command definitions
-│   └── gsd/           # GSD-specific commands
-├── get-shit-done/     # Skill resources
-│   ├── references/    # Principle documents
-│   ├── templates/     # File templates
-│   └── workflows/     # Multi-step procedures
-├── src/               # Source code (if applicable)
+│   └── gsdr/          # GSDR commands
+├── skills/            # Skill definitions (slash commands)
+├── agents/            # Sub-agent definitions
+├── references/        # Principle documents
+├── templates/         # File templates
+├── src/               # TypeScript source code
 ├── tests/             # Test files
+├── dist/              # Built CLI tools (esbuild output)
 ├── package.json       # Project manifest
 └── README.md          # User documentation
 ```
@@ -145,29 +146,35 @@ get-shit-done/
 - Key files: install.js - handles npx installation
 - Subdirectories: None
 
-**commands/gsd/**
+**commands/gsdr/**
 - Purpose: Slash command definitions for Claude Code
 - Contains: *.md files (one per command)
-- Key files: new-project.md, plan-phase.md, execute-plan.md
+- Key files: new-project.md, plan-phase.md, execute-phase.md
 - Subdirectories: None (flat structure)
 
-**get-shit-done/references/**
-- Purpose: Core philosophy and guidance documents
-- Contains: principles.md, questioning.md, plan-format.md
-- Key files: principles.md - system philosophy
+**skills/**
+- Purpose: Skill definitions with rules and workflow logic
+- Contains: Skill directories with SKILL.md and optional rules/
+- Key files: execute-phase/SKILL.md, help/SKILL.md, quick/SKILL.md
+- Subdirectories: One per skill (execute-phase/, help/, quick/, etc.)
+
+**agents/**
+- Purpose: Sub-agent definitions for workflow orchestration
+- Contains: gsdr-*.md agent files
+- Key files: gsdr-planner.md, gsdr-executor.md
 - Subdirectories: None
 
-**get-shit-done/templates/**
+**references/**
+- Purpose: Core philosophy and guidance documents
+- Contains: Principle and reference documents
+- Key files: principles.md, questioning.md
+- Subdirectories: None
+
+**templates/**
 - Purpose: Document templates for .planning/ files
 - Contains: Template definitions with frontmatter
 - Key files: project.md, roadmap.md, plan.md, summary.md
-- Subdirectories: codebase/ (new - for stack/architecture/structure templates)
-
-**get-shit-done/workflows/**
-- Purpose: Reusable multi-step procedures
-- Contains: Workflow definitions called by commands
-- Key files: execute-plan.md, research-phase.md
-- Subdirectories: None
+- Subdirectories: codebase/ (stack/architecture/structure templates)
 
 ## Key File Locations
 
@@ -211,16 +218,17 @@ get-shit-done/
 - Documentation: Update `README.md` with new command
 
 **New Template:**
-- Implementation: `get-shit-done/templates/{name}.md`
+- Implementation: `templates/{name}.md`
 - Documentation: Template is self-documenting (includes guidelines)
 
-**New Workflow:**
-- Implementation: `get-shit-done/workflows/{name}.md`
-- Usage: Reference from command with `@${CLAUDE_SKILL_DIR}/../workflows/{name}.md`
+**New Skill:**
+- Implementation: `skills/{skill-name}/SKILL.md`
+- Rules: `skills/{skill-name}/rules/*.md` (optional)
+- Usage: Auto-discovered by Claude Code as slash commands
 
 **New Reference Document:**
-- Implementation: `get-shit-done/references/{name}.md`
-- Usage: Reference from commands/workflows as needed
+- Implementation: `references/{name}.md`
+- Usage: Reference from skills/agents as needed
 
 **Utilities:**
 - No utilities yet (`install.js` is monolithic)

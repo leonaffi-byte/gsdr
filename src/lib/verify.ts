@@ -1,7 +1,3 @@
-/**
- * Verify -- Verification suite, consistency, and health validation
- * Ported from GSD verify.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

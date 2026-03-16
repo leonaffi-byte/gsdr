@@ -1,7 +1,3 @@
-/**
- * Core -- Shared utilities, constants, and internal helpers
- * Ported from GSD core.cjs to TypeScript. Multi-runtime code stripped.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

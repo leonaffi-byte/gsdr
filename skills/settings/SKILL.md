@@ -12,6 +12,23 @@ Interactive configuration of GSDR workflow agents (research, plan_check, verifie
 Read all files referenced by the invoking prompt's execution_context before starting.
 </required_reading>
 
+<settings_banners>
+Display a stage banner for settings. Pick randomly from this inline settings pool:
+
+| # | Banner Text |
+|---|-------------|
+| 1 | `GSDR > SETTINGS` |
+| 2 | `GSDR > TWEAKING THE KNOBS` |
+| 3 | `GSDR > CONFIGURATION TIME` |
+
+Format:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ {selected settings banner text}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+</settings_banners>
+
 <process>
 
 <step name="ensure_and_load_config">
@@ -183,9 +200,10 @@ Write `~/.gsdr/defaults.json` with:
 <step name="confirm">
 Display:
 
+Display a completion banner using the settings pool from `<settings_banners>` above:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► SETTINGS UPDATED
+ GSDR > SETTINGS UPDATED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 | Setting              | Value |

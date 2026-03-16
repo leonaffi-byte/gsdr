@@ -1,7 +1,3 @@
-/**
- * Milestone -- Milestone and requirements lifecycle operations
- * Ported from GSD milestone.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

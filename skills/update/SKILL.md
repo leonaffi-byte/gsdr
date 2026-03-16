@@ -145,15 +145,15 @@ Exit.
 ────────────────────────────────────────────────────────────
 
 ⚠️  **Note:** The installer performs a clean install of GSDR folders:
-- `commands/gsd/` will be wiped and replaced
-- `get-shit-done/` will be wiped and replaced
+- `commands/gsdr/` will be wiped and replaced
+- `skills/` will be wiped and replaced
 - `agents/gsdr-*` files will be replaced
 
 (Paths are relative to your plugin install location)
 
 Your custom files in other locations are preserved:
-- Custom commands not in `commands/gsd/` ✓
-- Custom agents not prefixed with `gsd-` ✓
+- Custom commands not in `commands/gsdr/` ✓
+- Custom agents not prefixed with `gsdr-` ✓
 - Custom hooks ✓
 - Your CLAUDE.md files ✓
 
@@ -205,7 +205,7 @@ Format completion message (changelog was already shown in confirmation step):
 
 ⚠️  Restart Claude Code to pick up the new commands.
 
-[View full changelog](https://github.com/glittercowboy/get-shit-done/blob/main/CHANGELOG.md)
+[View full changelog](https://github.com/leonaffi-byte/gsdr/blob/master/CHANGELOG.md)
 ```
 </step>
 

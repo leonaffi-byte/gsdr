@@ -118,6 +118,10 @@ Phase: "API documentation"
 
 **Express path available:** If you already have a PRD or acceptance criteria document, use `/gsdr:plan-phase {phase} --prd path/to/prd.md` to skip this discussion and go straight to planning.
 
+<required_reading>
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
+</required_reading>
+
 <step name="initialize" priority="first">
 Phase number from argument (required).
 
@@ -307,6 +311,14 @@ Gray areas:
 </step>
 
 <step name="present_gray_areas">
+
+Display a stage banner. Pick randomly from the QUESTIONING banner pool in @references/ui-brand.md:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ {selected banner text}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
 Present the domain boundary, prior decisions, and gray areas to user.
 
 **First, state the boundary and any prior decisions that apply:**
@@ -618,10 +630,10 @@ node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" config-set workflow._auto_chai
 
 **If `--auto` flag present OR `AUTO_CHAIN` is true OR `AUTO_CFG` is true:**
 
-Display banner:
+Display a stage banner. Pick randomly from the PLANNING banner pool in @references/ui-brand.md (auto-advance context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► AUTO-ADVANCING TO PLAN
+ GSDR > AUTO-ADVANCING — {selected planning text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Context captured. Launching plan-phase...

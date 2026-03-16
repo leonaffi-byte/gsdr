@@ -1,7 +1,3 @@
-/**
- * Roadmap -- Roadmap parsing and update operations
- * Ported from GSD roadmap.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

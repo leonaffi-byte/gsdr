@@ -1,7 +1,3 @@
-/**
- * State -- STATE.md operations and progression engine
- * Ported from GSD state.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

@@ -1,7 +1,3 @@
-/**
- * Commands -- Standalone utility commands
- * Ported from GSD commands.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

@@ -1,7 +1,3 @@
-/**
- * Config -- Planning config CRUD operations
- * Ported from GSD config.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

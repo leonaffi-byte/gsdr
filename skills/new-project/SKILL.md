@@ -13,6 +13,8 @@ Initialize a new project through unified flow: questioning, research (optional),
 
 <required_reading>
 Read all files referenced by the invoking prompt's execution_context before starting.
+
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
 </required_reading>
 
 <auto_mode>
@@ -214,11 +216,21 @@ Proceed to Step 4 (skip Steps 3 and 5).
 
 **If auto mode:** Skip (already handled in Step 2a). Extract project context from provided document instead and proceed to Step 4.
 
-**Display stage banner:**
+**Display the large ASCII art logo** from @references/ui-brand.md Section 12 as the first thing a new user sees:
+```
+ ██████╗ ███████╗██████╗ ██████╗
+██╔════╝ ██╔════╝██╔══██╗██╔══██╗
+██║  ███╗███████╗██║  ██║██████╔╝
+██║   ██║╚════██║██║  ██║██╔══██╗
+╚██████╔╝███████║██████╔╝██║  ██║
+ ╚═════╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝
+       GET SHIT DONE. REBRANDABLE.
+```
 
+**Display stage banner.** Pick randomly from the QUESTIONING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► QUESTIONING
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -524,13 +536,11 @@ Use AskUserQuestion:
 
 **If "Research first":**
 
-Display stage banner:
+Display a stage banner. Pick randomly from the RESEARCHING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► RESEARCHING
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Researching [domain] ecosystem...
 ```
 
 Create research directory:
@@ -544,9 +554,9 @@ Check if this is greenfield or subsequent milestone:
 - If no "Validated" requirements in PROJECT.md → Greenfield (building from scratch)
 - If "Validated" requirements exist → Subsequent milestone (adding to existing app)
 
-Display spawning indicator:
+Pick randomly from batch spawning pool in @references/ui-brand.md for the 4 researchers:
 ```
-◆ Spawning 4 researchers in parallel...
+{selected batch spawning text, e.g., "Unleashing 4 researchers simultaneously..."}
   → Stack research
   → Features research
   → Architecture research
@@ -732,10 +742,10 @@ Commit after writing.
 ", subagent_type="gsdr-research-synthesizer", model="{synthesizer_model}", description="Synthesize research")
 ```
 
-Display research complete banner and key findings:
+Pick randomly from completion pool in @references/ui-brand.md for each completed researcher. Display research complete banner:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► RESEARCH COMPLETE ✓
+ GSDR > RESEARCH COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## Key Findings
@@ -751,10 +761,10 @@ Files: `.planning/research/`
 
 ## 7. Define Requirements
 
-Display stage banner:
+Display a stage banner. Pick randomly from the DEFINING REQUIREMENTS banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► DEFINING REQUIREMENTS
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -896,14 +906,14 @@ node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" commit "docs: define v1 requir
 
 ## 8. Create Roadmap
 
-Display stage banner:
+Display a stage banner. Pick randomly from the CREATING ROADMAP banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► CREATING ROADMAP
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning roadmapper...
-```
+Pick randomly from single spawning pool in @references/ui-brand.md for the roadmapper spawn.
 
 Spawn gsdr-roadmapper agent with path references:
 
@@ -1046,10 +1056,10 @@ Skip interactive questioning entirely -- proceed to Step 9.
 
 **If interactive mode:**
 
-Display banner:
+Display a stage banner. Pick randomly from the QUESTIONING banner pool in @references/ui-brand.md (phase context gathering):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► PHASE CONTEXT GATHERING
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -1199,9 +1209,10 @@ The handoff and resume happen automatically. Do NOT present this as an interacti
 
 Present completion summary:
 
+Display the large ASCII art logo from @references/ui-brand.md Section 12, then pick randomly from the MILESTONE COMPLETE banner pool in @references/ui-brand.md (project init context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► PROJECT INITIALIZED ✓
+ GSDR > PROJECT INITIALIZED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **[Project Name]**

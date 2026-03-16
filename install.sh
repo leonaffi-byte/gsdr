@@ -14,11 +14,13 @@ NC='\033[0m'
 info()  { echo -e "${CYAN}${BOLD}>>>${NC} $1"; }
 ok()    { echo -e "${GREEN}${BOLD}>>>${NC} $1"; }
 warn()  { echo -e "${YELLOW}${BOLD}>>>${NC} $1"; }
-fail()  { echo -e "${RED}${BOLD}>>>${NC} $1"; exit 1; }
+fail()  { echo -e "${RED}${BOLD}>>>${NC} Well that didn't work."; echo -e "${RED}${BOLD}>>>${NC} $1"; exit 1; }
 
 echo ""
-echo -e "${BOLD}  GSDR — GSD Reloaded${NC}"
-echo -e "  Autonomous spec-driven development for Claude Code"
+echo -e "${BOLD}  ▄▄ ▄▄▄ ▄▄▄ ▄▄▄${NC}"
+echo -e "${BOLD}  █▌ ▀▄▄ █▄▀ █▄▀${NC}"
+echo -e "${BOLD}  ▀▀ ▄▄▀ ▀ ▀ ▀ ▀${NC}"
+echo -e "  ${CYAN}Get shit done. Autonomously.${NC}"
 echo ""
 
 # Check Node.js
@@ -41,20 +43,18 @@ if ! command -v npm &> /dev/null; then
 fi
 
 # Install globally
-info "Installing @leonaffi/gsdr via npm..."
+info "Installing GSDR... (patience, grasshopper)"
 npm install -g @leonaffi/gsdr
 
 # Run installer to set up Claude Code plugin
-info "Setting up Claude Code plugin..."
+info "Wiring into Claude Code..."
 gsdr
 
 echo ""
-ok "GSDR installed successfully!"
+ok "GSDR is locked and loaded."
 echo ""
-echo -e "  ${BOLD}Next steps:${NC}"
-echo "  1. Start Claude Code with the plugin:"
-echo "     claude --plugin-dir ~/.claude/plugins/local/gsdr"
+echo -e "  ${BOLD}Next up:${NC}"
+echo "  Start Claude Code and run:"
 echo ""
-echo "  2. Or add to your Claude Code settings, then run:"
-echo "     /gsdr:new-project"
+echo -e "    ${CYAN}/gsdr:new-project${NC}"
 echo ""

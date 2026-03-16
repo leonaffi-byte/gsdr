@@ -1,7 +1,3 @@
-/**
- * Phase -- Phase CRUD, query, and lifecycle operations
- * Ported from GSD phase.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

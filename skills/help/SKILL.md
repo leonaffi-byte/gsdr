@@ -9,19 +9,30 @@ Display the complete GSDR command reference. Output ONLY the reference content. 
 </purpose>
 
 <reference>
-# GSDR Command Reference
+```
+▄▄ ▄▄▄ ▄▄▄ ▄▄▄
+█▌ ▀▄▄ █▄▀ █▄▀
+▀▀ ▄▄▀ ▀ ▀ ▀ ▀
+```
+(@references/ui-brand.md Section 12 — Logo Compact)
 
-**GSD** (Get Shit Done) creates hierarchical project plans optimized for solo agentic development with Claude Code.
+Autonomous build system with chaotic good energy.
+Plans it, builds it, ships it — no hand-holding required.
+We automate ruthlessly and celebrate loudly.
+
+---
+
+# GSDR Command Reference
 
 ## Quick Start
 
-1. `/gsdr:new-project` - Initialize project (includes research, requirements, roadmap)
-2. `/gsdr:plan-phase 1` - Create detailed plan for first phase
-3. `/gsdr:execute-phase 1` - Execute the phase
+1. `/gsdr:new-project` — From zero to roadmap in one conversation
+2. `/gsdr:plan-phase 1` — Turn vibes into actionable plans
+3. `/gsdr:execute-phase 1` — Unleash the plan on your codebase
 
 ## Staying Updated
 
-GSD evolves fast. Update periodically:
+GSDR evolves fast. Update periodically:
 
 ```bash
 npx gsdr@latest
@@ -30,13 +41,13 @@ npx gsdr@latest
 ## Core Workflow
 
 ```
-/gsdr:new-project → /gsdr:plan-phase → /gsdr:execute-phase → repeat
+/gsdr:new-project -> /gsdr:plan-phase -> /gsdr:execute-phase -> repeat
 ```
 
 ### Project Initialization
 
 **`/gsdr:new-project`**
-Initialize new project through unified flow.
+From zero to roadmap in one conversation.
 
 One command takes you from idea to ready-for-planning:
 - Deep questioning to understand what you're building
@@ -55,7 +66,7 @@ Creates all `.planning/` artifacts:
 Usage: `/gsdr:new-project`
 
 **`/gsdr:map-codebase`**
-Map an existing codebase for brownfield projects.
+Learn your codebase before we touch anything.
 
 - Analyzes codebase with parallel Explore agents
 - Creates `.planning/codebase/` with 7 focused documents
@@ -67,7 +78,7 @@ Usage: `/gsdr:map-codebase`
 ### Phase Planning
 
 **`/gsdr:discuss-phase <number>`**
-Help articulate your vision for a phase before planning.
+Talk it out before we build it.
 
 - Captures how you imagine this phase working
 - Creates CONTEXT.md with your vision, essentials, and boundaries
@@ -76,7 +87,7 @@ Help articulate your vision for a phase before planning.
 Usage: `/gsdr:discuss-phase 2`
 
 **`/gsdr:research-phase <number>`**
-Comprehensive ecosystem research for niche/complex domains.
+Going down the rabbit hole so you don't have to.
 
 - Discovers standard stack, architecture patterns, pitfalls
 - Creates RESEARCH.md with "how experts build this" knowledge
@@ -86,7 +97,7 @@ Comprehensive ecosystem research for niche/complex domains.
 Usage: `/gsdr:research-phase 3`
 
 **`/gsdr:list-phase-assumptions <number>`**
-See what Claude is planning to do before it starts.
+See what we're thinking before we start scheming.
 
 - Shows Claude's intended approach for a phase
 - Lets you course-correct if Claude misunderstood your vision
@@ -95,7 +106,7 @@ See what Claude is planning to do before it starts.
 Usage: `/gsdr:list-phase-assumptions 3`
 
 **`/gsdr:plan-phase <number>`**
-Create detailed execution plan for a specific phase.
+Turn vibes into actionable plans.
 
 - Generates `.planning/phases/XX-phase-name/XX-YY-PLAN.md`
 - Breaks phase into concrete, actionable tasks
@@ -110,7 +121,7 @@ Result: Creates `.planning/phases/01-foundation/01-01-PLAN.md`
 ### Execution
 
 **`/gsdr:execute-phase <phase-number>`**
-Execute all plans in a phase.
+Unleash the plan on your codebase.
 
 - Groups plans by wave (from frontmatter), executes waves sequentially
 - Plans within each wave run in parallel via Task tool
@@ -122,7 +133,7 @@ Usage: `/gsdr:execute-phase 5`
 ### Quick Mode
 
 **`/gsdr:quick`**
-Execute small, ad-hoc tasks with GSDR guarantees but skip optional agents.
+Skip the ceremony, ship the thing.
 
 Quick mode uses the same system with a shorter path:
 - Spawns planner + executor (skips researcher, checker, verifier)
@@ -137,7 +148,7 @@ Result: Creates `.planning/quick/NNN-slug/PLAN.md`, `.planning/quick/NNN-slug/SU
 ### Roadmap Management
 
 **`/gsdr:add-phase <description>`**
-Add new phase to end of current milestone.
+Append a new phase because scope never shrinks.
 
 - Appends to ROADMAP.md
 - Uses next sequential number
@@ -146,7 +157,7 @@ Add new phase to end of current milestone.
 Usage: `/gsdr:add-phase "Add admin dashboard"`
 
 **`/gsdr:insert-phase <after> <description>`**
-Insert urgent work as decimal phase between existing phases.
+Squeeze in urgent work between existing phases.
 
 - Creates intermediate phase (e.g., 7.1 between 7 and 8)
 - Useful for discovered work that must happen mid-milestone
@@ -156,7 +167,7 @@ Usage: `/gsdr:insert-phase 7 "Fix critical auth bug"`
 Result: Creates Phase 7.1
 
 **`/gsdr:remove-phase <number>`**
-Remove a future phase and renumber subsequent phases.
+Cut a phase loose and close the gap.
 
 - Deletes phase directory and all references
 - Renumbers all subsequent phases to close the gap
@@ -169,7 +180,7 @@ Result: Phase 17 deleted, phases 18-20 become 17-19
 ### Milestone Management
 
 **`/gsdr:new-milestone <name>`**
-Start a new milestone through unified flow.
+Same energy as new-project, but for the next chapter.
 
 - Deep questioning to understand what you're building next
 - Optional domain research (spawns 4 parallel researcher agents)
@@ -181,7 +192,7 @@ Mirrors `/gsdr:new-project` flow for brownfield projects (existing PROJECT.md).
 Usage: `/gsdr:new-milestone "v2.0 Features"`
 
 **`/gsdr:complete-milestone <version>`**
-Archive completed milestone and prepare for next version.
+Pop the champagne (digitally).
 
 - Creates MILESTONES.md entry with stats
 - Archives full details to milestones/ directory
@@ -193,7 +204,7 @@ Usage: `/gsdr:complete-milestone 1.0.0`
 ### Progress Tracking
 
 **`/gsdr:progress`**
-Check project status and intelligently route to next action.
+See how far you've come (and how far you have to go).
 
 - Shows visual progress bar and completion percentage
 - Summarizes recent work from SUMMARY files
@@ -207,7 +218,7 @@ Usage: `/gsdr:progress`
 ### Session Management
 
 **`/gsdr:resume-work`**
-Resume work from previous session with full context restoration.
+Pick up right where you left off.
 
 - Reads STATE.md for project context
 - Shows current position and recent progress
@@ -216,7 +227,7 @@ Resume work from previous session with full context restoration.
 Usage: `/gsdr:resume-work`
 
 **`/gsdr:pause-work`**
-Create context handoff when pausing work mid-phase.
+Save your place — we'll remember everything.
 
 - Creates .continue-here file with current state
 - Updates STATE.md session continuity section
@@ -227,11 +238,11 @@ Usage: `/gsdr:pause-work`
 ### Debugging
 
 **`/gsdr:debug [issue description]`**
-Systematic debugging with persistent state across context resets.
+Hunt bugs with the tenacity of a caffeinated raccoon.
 
 - Gathers symptoms through adaptive questioning
 - Creates `.planning/debug/[slug].md` to track investigation
-- Investigates using scientific method (evidence → hypothesis → test)
+- Investigates using scientific method (evidence -> hypothesis -> test)
 - Survives `/clear` — run `/gsdr:debug` with no args to resume
 - Archives resolved issues to `.planning/debug/resolved/`
 
@@ -241,7 +252,7 @@ Usage: `/gsdr:debug` (resume active session)
 ### Todo Management
 
 **`/gsdr:add-todo [description]`**
-Capture idea or task as todo from current conversation.
+Capture that thought before it escapes.
 
 - Extracts context from conversation (or uses provided description)
 - Creates structured todo file in `.planning/todos/pending/`
@@ -253,7 +264,7 @@ Usage: `/gsdr:add-todo` (infers from conversation)
 Usage: `/gsdr:add-todo Add auth token refresh`
 
 **`/gsdr:check-todos [area]`**
-List pending todos and select one to work on.
+Review the backlog and pick a fight.
 
 - Lists all pending todos with title, area, age
 - Optional area filter (e.g., `/gsdr:check-todos api`)
@@ -267,7 +278,7 @@ Usage: `/gsdr:check-todos api`
 ### User Acceptance Testing
 
 **`/gsdr:verify-work [phase]`**
-Validate built features through conversational UAT.
+Trust but verify — the GSDR way.
 
 - Extracts testable deliverables from SUMMARY.md files
 - Presents tests one at a time (yes/no responses)
@@ -279,7 +290,7 @@ Usage: `/gsdr:verify-work 3`
 ### Milestone Auditing
 
 **`/gsdr:audit-milestone [version]`**
-Audit milestone completion against original intent.
+Grade our own homework before shipping.
 
 - Reads all phase VERIFICATION.md files
 - Checks requirements coverage
@@ -289,7 +300,7 @@ Audit milestone completion against original intent.
 Usage: `/gsdr:audit-milestone`
 
 **`/gsdr:plan-milestone-gaps`**
-Create phases to close gaps identified by audit.
+Turn audit findings into actionable fix plans.
 
 - Reads MILESTONE-AUDIT.md and groups gaps into phases
 - Prioritizes by requirement priority (must/should/nice)
@@ -301,7 +312,7 @@ Usage: `/gsdr:plan-milestone-gaps`
 ### Configuration
 
 **`/gsdr:settings`**
-Configure workflow toggles and model profile interactively.
+Tweak the knobs.
 
 - Toggle researcher, plan checker, verifier agents
 - Select model profile (quality/balanced/budget)
@@ -310,7 +321,7 @@ Configure workflow toggles and model profile interactively.
 Usage: `/gsdr:settings`
 
 **`/gsdr:set-profile <profile>`**
-Quick switch model profile for GSDR agents.
+Switch how much horsepower we throw at the problem.
 
 - `quality` — Opus everywhere except verification
 - `balanced` — Opus for planning, Sonnet for execution (default)
@@ -321,7 +332,7 @@ Usage: `/gsdr:set-profile budget`
 ### Utility Commands
 
 **`/gsdr:cleanup`**
-Archive accumulated phase directories from completed milestones.
+Tidy up the mess from milestones past.
 
 - Identifies phases from completed milestones still in `.planning/phases/`
 - Shows dry-run summary before moving anything
@@ -331,10 +342,10 @@ Archive accumulated phase directories from completed milestones.
 Usage: `/gsdr:cleanup`
 
 **`/gsdr:help`**
-Show this command reference.
+You're looking at it.
 
 **`/gsdr:update`**
-Update GSDR to latest version with changelog preview.
+Stay current without the guesswork.
 
 - Shows installed vs latest version comparison
 - Displays changelog entries for versions you've missed
@@ -345,7 +356,7 @@ Update GSDR to latest version with changelog preview.
 Usage: `/gsdr:update`
 
 **`/gsdr:join-discord`**
-Join the GSDR Discord community.
+Find your people.
 
 - Get help, share what you're building, stay updated
 - Connect with other GSDR users
@@ -394,16 +405,10 @@ Usage: `/gsdr:join-discord`
 Set during `/gsdr:new-project`:
 
 **Interactive Mode**
-
-- Confirms each major decision
-- Pauses at checkpoints for approval
-- More guidance throughout
+For the cautious builder. Confirms each major decision, pauses at checkpoints for approval, more guidance throughout.
 
 **YOLO Mode**
-
-- Auto-approves most decisions
-- Executes plans without confirmation
-- Only stops for critical checkpoints
+Auto-approves most decisions. Executes plans without confirmation. Only stops for critical checkpoints. For people who trust the process.
 
 Change anytime by editing `.planning/config.json`
 
@@ -439,17 +444,17 @@ Example config:
 **Starting a new project:**
 
 ```
-/gsdr:new-project        # Unified flow: questioning → research → requirements → roadmap
+/gsdr:new-project        # The full interrogation -> research -> requirements -> roadmap pipeline
 /clear
-/gsdr:plan-phase 1       # Create plans for first phase
+/gsdr:plan-phase 1       # Scheme up the first phase
 /clear
-/gsdr:execute-phase 1    # Execute all plans in phase
+/gsdr:execute-phase 1    # Let it rip
 ```
 
 **Resuming work after a break:**
 
 ```
-/gsdr:progress  # See where you left off and continue
+/gsdr:progress  # See where you left off and get back in the game
 ```
 
 **Adding urgent mid-milestone work:**
@@ -465,7 +470,7 @@ Example config:
 ```
 /gsdr:complete-milestone 1.0.0
 /clear
-/gsdr:new-milestone  # Start next milestone (questioning → research → requirements → roadmap)
+/gsdr:new-milestone  # Start the next chapter
 ```
 
 **Capturing ideas during work:**
@@ -473,14 +478,14 @@ Example config:
 ```
 /gsdr:add-todo                    # Capture from conversation context
 /gsdr:add-todo Fix modal z-index  # Capture with explicit description
-/gsdr:check-todos                 # Review and work on todos
+/gsdr:check-todos                 # Review and pick a fight
 /gsdr:check-todos api             # Filter by area
 ```
 
 **Debugging an issue:**
 
 ```
-/gsdr:debug "form submission fails silently"  # Start debug session
+/gsdr:debug "form submission fails silently"  # Start the hunt
 # ... investigation happens, context fills up ...
 /clear
 /gsdr:debug                                    # Resume from where you left off
@@ -488,8 +493,11 @@ Example config:
 
 ## Getting Help
 
+Lost? Start here.
+
 - Read `.planning/PROJECT.md` for project vision
 - Read `.planning/STATE.md` for current context
 - Check `.planning/ROADMAP.md` for phase status
 - Run `/gsdr:progress` to check where you're up to
+- Run `/gsdr:join-discord` to find your people
 </reference>

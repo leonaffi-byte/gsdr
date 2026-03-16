@@ -1,7 +1,3 @@
-/**
- * Template -- Template selection and fill operations
- * Ported from GSD template.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

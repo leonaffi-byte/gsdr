@@ -53,7 +53,7 @@ describe('execute-plan.md -- exists at plugin root (FOUND-03)', () => {
     expect(content).not.toContain('gsd-tools.cjs');
   });
 
-  it('does NOT contain /gsd: (no GSD slash commands)', () => {
+  it('does NOT contain /gsd: (no GSD slash commands, only /gsdr:)', () => {
     const content = readFileSync(EXECUTE_PLAN_PATH, 'utf-8');
     expect(content).not.toContain('/gsd:');
   });
@@ -94,7 +94,7 @@ describe('transition.md -- exists at plugin root (AUTO-03)', () => {
     expect(content).not.toContain('gsd-tools.cjs');
   });
 
-  it('does NOT contain /gsd: (no GSD slash commands)', () => {
+  it('does NOT contain /gsd: (no GSD slash commands, only /gsdr:)', () => {
     const content = readFileSync(TRANSITION_PATH, 'utf-8');
     expect(content).not.toContain('/gsd:');
   });

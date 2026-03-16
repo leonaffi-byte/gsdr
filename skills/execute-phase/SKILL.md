@@ -57,8 +57,8 @@ Complexity: {COMPLEXITY_TIER or "not classified"}
 
 This is display-only -- execute-phase does not change behavior based on tier. The tier already influenced plan-phase decisions (plan count, research depth) and those decisions are baked into the PLAN.md files.
 
-**If `phase_found` is false:** Error — phase directory not found.
-**If `plan_count` is 0:** Error — no plans found in phase.
+**If `phase_found` is false:** Display error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the header. Description: "Phase directory not found." Fix: "Check phase number or run `/gsdr:plan-phase` first."
+**If `plan_count` is 0:** Display error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the header. Description: "No plans found in phase." Fix: "Run `/gsdr:plan-phase {phase}` first."
 **If `state_exists` is false but `.planning/` exists:** Offer reconstruct or continue.
 
 When `parallelization` is false, plans within a wave execute sequentially.
@@ -210,6 +210,13 @@ All subsequent commits go to this branch. User handles merging.
 <step name="validate_phase">
 From init JSON: `phase_dir`, `plan_count`, `incomplete_count`.
 
+Display a stage banner. Pick randomly from the EXECUTE-PHASE banner pool in @references/ui-brand.md:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ {selected banner text}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
 Report: "Found {plan_count} plans in {phase_dir} ({incomplete_count} incomplete)"
 </step>
 
@@ -252,8 +259,11 @@ Execute each wave in sequence. Within a wave: parallel if `PARALLELIZATION=true`
 
    **{Plan ID}: {Plan Name}**
    {2-3 sentences: what this builds, technical approach, why it matters}
+   ```
 
-   Spawning {count} agent(s)...
+   Pick randomly from batch spawning pool (if multiple agents) or single spawning pool (if one agent) in @references/ui-brand.md for the executor spawn display.
+
+   ```
    ---
    ```
 
@@ -348,6 +358,8 @@ Execute each wave in sequence. Within a wave: parallel if `PARALLELIZATION=true`
    If ANY spot-check fails: route to `auto_fix_loop` step (if auto_advance active) or manual failure handler (step 6).
 
    If pass:
+
+   Pick randomly from completion pool in @references/ui-brand.md for each completed plan.
    ```
    ---
    ## Wave {N} Complete
@@ -720,6 +732,14 @@ The CLI handles:
 
 Extract from result: `next_phase`, `next_phase_name`, `is_last_phase`.
 
+**Display Phase Celebration Art** from @references/ui-brand.md Section 12 (Phase Celebration):
+```
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+▓  ✓  PHASE {N} OBLITERATED  ✓  ▓
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+```
+Then pick randomly from the phase completion messages in the celebration pool in @references/ui-brand.md.
+
 ```bash
 node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" commit "docs(phase-{X}): complete phase execution" --files .planning/ROADMAP.md .planning/STATE.md .planning/REQUIREMENTS.md {phase_dir}/*-VERIFICATION.md
 ```
@@ -815,7 +835,7 @@ Orchestrator: ~10-15% context. Subagents: fresh 200k each. No polling (Task bloc
 </context_efficiency>
 
 <failure_handling>
-- **classifyHandoffIfNeeded false failure:** Agent reports "failed" but error is `classifyHandoffIfNeeded is not defined` → Claude Code bug, not GSD. Spot-check (SUMMARY exists, commits present) → if pass, treat as success
+- **classifyHandoffIfNeeded false failure:** Agent reports "failed" but error is `classifyHandoffIfNeeded is not defined` → Claude Code bug, not GSDR. Spot-check (SUMMARY exists, commits present) → if pass, treat as success
 - **Agent fails mid-plan:** Missing SUMMARY.md → report, ask user how to proceed
 - **Dependency chain breaks:** Wave 1 fails → Wave 2 dependents likely fail → user chooses attempt or skip
 - **All agents in wave fail:** Systemic issue → stop, report for investigation

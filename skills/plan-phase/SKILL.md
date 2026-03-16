@@ -37,7 +37,7 @@ Parse JSON for: `researcher_model`, `planner_model`, `checker_model`, `research_
 
 **File paths (for <files_to_read> blocks):** `state_path`, `roadmap_path`, `requirements_path`, `context_path`, `research_path`, `verification_path`, `uat_path`. These are null if files don't exist.
 
-**If `planning_exists` is false:** Error — run `/gsdr:new-project` first.
+**If `planning_exists` is false:** Display error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the header. Description: "No .planning/ directory found." Fix: "Run `/gsdr:new-project` first."
 
 ## 1.5. Check Multi-Phase Mode
 
@@ -108,9 +108,8 @@ b. **Display batch overview:**
 
    Phases to plan: {phase_list}
    Agents: {count}/{max}
-
-   Spawning planners...
    ```
+   Pick randomly from batch spawning pool in @references/ui-brand.md for the planner batch spawn.
 
 c. **Spawn plan-phase for each phase in batch (single-phase mode):**
 
@@ -251,10 +250,10 @@ if [ -z "$PRD_CONTENT" ]; then
 fi
 ```
 
-2. Display banner:
+2. Display a stage banner. Pick randomly from the PLANNING banner pool in @references/ui-brand.md (PRD express context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► PRD EXPRESS PATH
+ {selected banner text} (PRD EXPRESS)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Using PRD: {PRD_FILE}
@@ -357,13 +356,14 @@ If "Run discuss-phase first": Display `/gsdr:discuss-phase {X}` and exit workflo
 
 **If RESEARCH.md missing OR `--research` flag:**
 
-Display banner:
+Display a stage banner. Pick randomly from the RESEARCHING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► RESEARCHING PHASE {X}
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning researcher...
+Pick randomly from single spawning pool in @references/ui-brand.md for the researcher spawn.
 ```
 
 ### Spawn gsdr-phase-researcher
@@ -475,13 +475,14 @@ Proceed to Step 8 only if user selects 2 or 3.
 
 ## 8. Spawn gsdr-planner Agent
 
-Display banner:
+Display a stage banner. Pick randomly from the PLANNING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► PLANNING PHASE {X}
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning planner...
+Pick randomly from single spawning pool in @references/ui-brand.md for the planner spawn.
 ```
 
 Planner prompt:
@@ -574,13 +575,14 @@ fi
 - Medium: max 2 checker iterations
 - Complex: max 3 checker iterations (current default)
 
-Display banner:
+Display a stage banner. Pick randomly from the VERIFYING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► VERIFYING PLANS
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning plan checker...
+Pick randomly from single spawning pool in @references/ui-brand.md for the checker spawn.
 ```
 
 Checker prompt:
@@ -712,10 +714,10 @@ Check for auto-advance trigger:
 
 **If `--auto` flag present OR `AUTO_CHAIN` is true OR `AUTO_CFG` is true:**
 
-Display banner:
+Display a stage banner. Pick randomly from the EXECUTING banner pool in @references/ui-brand.md (auto-advance context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► AUTO-ADVANCING TO EXECUTE
+ GSDR > AUTO-ADVANCING — {selected executing text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Plans ready. Launching execute-phase...
@@ -755,8 +757,9 @@ Route to `<offer_next>` (existing behavior).
 <offer_next>
 Output this markdown directly (not as a code block):
 
+Display a stage banner. Pick randomly from the PHASE COMPLETE banner pool in @references/ui-brand.md (planning context):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► PHASE {X} PLANNED ✓
+ {selected banner text} (PLANNED)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **Phase {X}: {Name}** — {N} plan(s) in {M} wave(s)

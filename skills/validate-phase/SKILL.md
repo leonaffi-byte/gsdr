@@ -29,9 +29,14 @@ AUDITOR_MODEL=$(node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" resolve-model 
 NYQUIST_CFG=$(node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" config get workflow.nyquist_validation --raw)
 ```
 
-If `NYQUIST_CFG` is `false`: exit with "Nyquist validation is disabled. Enable via /gsdr:settings."
+If `NYQUIST_CFG` is `false`: Display error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the header. Description: "Nyquist validation is disabled." Fix: "Enable via `/gsdr:settings`."
 
-Display banner: `GSD > VALIDATE PHASE {N}: {name}`
+Display a stage banner. Pick randomly from the VERIFYING banner pool in @references/ui-brand.md:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ {selected banner text}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
 ## 1. Detect Input State
 
@@ -42,7 +47,7 @@ SUMMARY_FILES=$(ls "${PHASE_DIR}"/*-SUMMARY.md 2>/dev/null)
 
 - **State A** (`VALIDATION_FILE` non-empty): Audit existing
 - **State B** (`VALIDATION_FILE` empty, `SUMMARY_FILES` non-empty): Reconstruct from artifacts
-- **State C** (`SUMMARY_FILES` empty): Exit — "Phase {N} not executed. Run /gsdr:execute-phase {N} first."
+- **State C** (`SUMMARY_FILES` empty): Display error using error box format from @references/ui-brand.md. Pick randomly from error header pool for the header. Description: "Phase {N} not executed." Fix: "Run `/gsdr:execute-phase {N}` first."
 
 ## 2. Discovery
 
@@ -141,17 +146,23 @@ node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" commit-docs "docs(phase-${PHAS
 ## 8. Results + Routing
 
 **Compliant:**
+Pick randomly from the phase completion messages in the celebration pool in @references/ui-brand.md and display:
 ```
-GSD > PHASE {N} IS NYQUIST-COMPLIANT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GSDR > PHASE {N} IS NYQUIST-COMPLIANT ✓
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 All requirements have automated verification.
-▶ Next: /gsdr:audit-milestone
+{selected celebration message}
+Next: /gsdr:audit-milestone
 ```
 
 **Partial:**
 ```
-GSD > PHASE {N} VALIDATED (PARTIAL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GSDR > PHASE {N} VALIDATED (PARTIAL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {M} automated, {K} manual-only.
-▶ Retry: /gsdr:validate-phase {N}
+Retry: /gsdr:validate-phase {N}
 ```
 
 Display `/clear` reminder.

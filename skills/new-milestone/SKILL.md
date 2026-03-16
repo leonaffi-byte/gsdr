@@ -17,6 +17,8 @@ Start a new milestone cycle for an existing project. Loads project context, gath
 
 Read all files referenced by the invoking prompt's execution_context before starting.
 
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
+
 </required_reading>
 
 <process>
@@ -111,12 +113,16 @@ node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" config-set workflow.research f
 
 **If "Research first":**
 
+Display a stage banner. Pick randomly from the RESEARCHING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► RESEARCHING
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning 4 researchers in parallel...
+Pick randomly from batch spawning pool in @references/ui-brand.md for the 4 researchers:
+```
+{selected batch spawning text}
   → Stack, Features, Architecture, Pitfalls
 ```
 
@@ -184,9 +190,10 @@ Commit after writing.
 ```
 
 Display key findings from SUMMARY.md:
+Pick randomly from completion pool in @references/ui-brand.md for each completed researcher. Display:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► RESEARCH COMPLETE ✓
+ GSDR > RESEARCH COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **Stack additions:** [from SUMMARY.md]
@@ -198,9 +205,10 @@ Display key findings from SUMMARY.md:
 
 ## 9. Define Requirements
 
+Display a stage banner. Pick randomly from the DEFINING REQUIREMENTS banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► DEFINING REQUIREMENTS
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -269,13 +277,14 @@ node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" commit "docs: define milestone
 
 ## 10. Create Roadmap
 
+Display a stage banner. Pick randomly from the CREATING ROADMAP banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► CREATING ROADMAP
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning roadmapper...
-```
+Pick randomly from single spawning pool in @references/ui-brand.md for the roadmapper spawn.
 
 **Starting phase number:** Read MILESTONES.md for last phase number. Continue from there (v1.0 ended at phase 5 → v1.1 starts at phase 6).
 
@@ -346,9 +355,10 @@ node "${CLAUDE_SKILL_DIR}/../dist/gsdr-tools.cjs" commit "docs: create milestone
 
 ## 11. Done
 
+Display a stage banner. Pick randomly from the MILESTONE COMPLETE banner pool in @references/ui-brand.md (milestone init context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► MILESTONE INITIALIZED ✓
+ GSDR > MILESTONE INITIALIZED ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **Milestone v[X.Y]: [Name]**

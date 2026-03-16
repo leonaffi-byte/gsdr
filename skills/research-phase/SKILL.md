@@ -14,6 +14,10 @@ Research how to implement a phase. Spawns gsdr-phase-researcher with phase conte
 Standalone research command. For most workflows, use `/gsdr:plan-phase` which integrates research automatically.
 </purpose>
 
+<required_reading>
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
+</required_reading>
+
 <process>
 
 ## Step 0: Resolve Model Profile
@@ -50,6 +54,15 @@ if [[ "$INIT" == @file:* ]]; then INIT=$(cat "${INIT#@file:}"); fi
 ```
 
 ## Step 4: Spawn Researcher
+
+Display a stage banner. Pick randomly from the RESEARCH-PHASE banner pool in @references/ui-brand.md:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ {selected banner text}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Pick randomly from single spawning pool in @references/ui-brand.md for the researcher spawn.
 
 ```
 Task(

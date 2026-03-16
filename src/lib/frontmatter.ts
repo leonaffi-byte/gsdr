@@ -1,7 +1,3 @@
-/**
- * Frontmatter -- YAML frontmatter parsing, serialization, and CRUD commands
- * Ported from GSD frontmatter.cjs to TypeScript.
- */
 
 import * as fs from 'fs';
 import * as path from 'path';

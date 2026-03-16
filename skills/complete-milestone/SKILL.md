@@ -20,6 +20,7 @@ Mark a shipped version (v1.0, v1.1, v2.0) as complete. Creates historical record
 3. `.planning/ROADMAP.md`
 4. `.planning/REQUIREMENTS.md`
 5. `.planning/PROJECT.md`
+6. @${CLAUDE_SKILL_DIR}/../references/ui-brand.md
 
 </required_reading>
 
@@ -696,9 +697,24 @@ Confirm: "Committed: chore: complete v[X.Y] milestone"
 
 <step name="offer_next">
 
+Display the full Milestone Celebration ASCII art from @references/ui-brand.md Section 12:
 ```
-✅ Milestone v[X.Y] [Name] complete
+╔═══════════════════════════════════════════════════════════╗
+║  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██   ║
+║  ██                                                 ██   ║
+║  ██   ▄▀▀▄ █▀▀▄ █  █ ▄▀▀▄ █▀▀▄ █▀▀▄ █▀▀▀ █▀▀▄   ██   ║
+║  ██   █    █▄▄▀ █  █ ▀▄▄▄ █▀▀█ █▀▀▄ █▀▀  █  █   ██   ║
+║  ██   ▀▄▄▀ █  █ ▀▄▄▀ ▄▄▄▀ █  █ █▄▄▀ █▄▄▄ █▄▄▀   ██   ║
+║  ██                                                 ██   ║
+║  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██   ║
+╚═══════════════════════════════════════════════════════════╝
+  {N} plans obliterated in {T} minutes.
+  {F} files didn't know what hit them.
+```
 
+Pick randomly from the milestone completion messages in the celebration pool in @references/ui-brand.md.
+
+```
 Shipped:
 - [N] phases ([M] plans, [P] tasks)
 - [One sentence of what shipped]

@@ -20,7 +20,13 @@ Flags are composable: `--discuss --full` gives discussion + plan-checking + veri
 
 <required_reading>
 Read all files referenced by the invoking prompt's execution_context before starting.
+
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
 </required_reading>
+
+<personality_note>
+Quick mode = maximum speed, minimum ceremony. Pick the shortest, punchiest banner variant from the EXECUTING pool. No fluff. Ship it.
+</personality_note>
 
 <process>
 **Step 1: Parse arguments and get task description**
@@ -46,31 +52,33 @@ If still empty, re-prompt: "Please provide a task description."
 
 Display banner based on active flags:
 
+Display a stage banner. Pick randomly from the EXECUTING banner pool in @references/ui-brand.md (quick mode -- pick the shortest, punchiest variant):
+
 If `$DISCUSS_MODE` and `$FULL_MODE`:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► QUICK TASK (DISCUSS + FULL)
+ {selected short executing text} (DISCUSS + FULL)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-◆ Discussion + plan checking + verification enabled
+Discussion + plan checking + verification enabled
 ```
 
 If `$DISCUSS_MODE` only:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► QUICK TASK (DISCUSS)
+ {selected short executing text} (DISCUSS)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-◆ Discussion phase enabled — surfacing gray areas before planning
+Surfacing gray areas before planning
 ```
 
 If `$FULL_MODE` only:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► QUICK TASK (FULL MODE)
+ {selected short executing text} (FULL MODE)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-◆ Plan checking + verification enabled
+Plan checking + verification enabled
 ```
 
 ---
@@ -121,13 +129,13 @@ Store `$QUICK_DIR` for use in orchestration.
 
 Skip this step entirely if NOT `$DISCUSS_MODE`.
 
-Display banner:
+Display a stage banner. Pick randomly from the QUESTIONING banner pool in @references/ui-brand.md (quick discuss context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► DISCUSSING QUICK TASK
+ {selected banner text} (QUICK)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-◆ Surfacing gray areas for: ${DESCRIPTION}
+Surfacing gray areas for: ${DESCRIPTION}
 ```
 
 **4.5a. Identify gray areas**
@@ -293,14 +301,14 @@ If plan not found, error: "Planner failed to create ${next_num}-PLAN.md"
 
 Skip this step entirely if NOT `$FULL_MODE`.
 
-Display banner:
+Display a stage banner. Pick randomly from the VERIFYING banner pool in @references/ui-brand.md (quick plan check):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► CHECKING PLAN
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning plan checker...
-```
+Pick randomly from single spawning pool in @references/ui-brand.md for the checker spawn.
 
 Checker prompt:
 
@@ -441,14 +449,14 @@ Note: For quick tasks producing multiple plans (rare), spawn executors in parall
 
 Skip this step entirely if NOT `$FULL_MODE`.
 
-Display banner:
+Display a stage banner. Pick randomly from the VERIFYING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► VERIFYING RESULTS
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning verifier...
-```
+Pick randomly from single spawning pool in @references/ui-brand.md for the verifier spawn.
 
 ```
 Task(
@@ -563,7 +571,7 @@ Display completion output:
 ```
 ---
 
-GSD > QUICK TASK COMPLETE (FULL MODE)
+GSDR > QUICK TASK COMPLETE (FULL MODE)
 
 Quick Task ${next_num}: ${DESCRIPTION}
 
@@ -580,7 +588,7 @@ Ready for next task: /gsdr:quick
 ```
 ---
 
-GSD > QUICK TASK COMPLETE
+GSDR > QUICK TASK COMPLETE
 
 Quick Task ${next_num}: ${DESCRIPTION}
 

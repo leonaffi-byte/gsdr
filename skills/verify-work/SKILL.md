@@ -23,6 +23,10 @@ Claude presents what SHOULD happen. User confirms or describes what's different.
 No Pass/Fail buttons. No severity questions. Just: "Here's what should happen. Does it?"
 </philosophy>
 
+<required_reading>
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
+</required_reading>
+
 <template>
 @${CLAUDE_SKILL_DIR}/../templates/UAT.md
 </template>
@@ -419,14 +423,14 @@ Diagnosis runs automatically - no user prompt. Parallel agents investigate simul
 <step name="plan_gap_closure">
 **Auto-plan fixes from diagnosed gaps:**
 
-Display:
+Display a stage banner. Pick randomly from the PLANNING banner pool in @references/ui-brand.md (gap fix context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► PLANNING FIXES
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning planner for gap closure...
-```
+Pick randomly from single spawning pool in @references/ui-brand.md for the planner spawn.
 
 Spawn gsdr-planner in --gaps mode:
 
@@ -465,14 +469,14 @@ On return:
 <step name="verify_gap_plans">
 **Verify fix plans with checker:**
 
-Display:
+Display a stage banner. Pick randomly from the VERIFYING banner pool in @references/ui-brand.md:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► VERIFYING FIX PLANS
+ {selected banner text}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
-◆ Spawning plan checker...
-```
+Pick randomly from single spawning pool in @references/ui-brand.md for the checker spawn.
 
 Initialize: `iteration_count = 1`
 
@@ -564,9 +568,10 @@ Wait for user response.
 <step name="present_ready">
 **Present completion and next steps:**
 
+Display a stage banner. Pick randomly from the PHASE COMPLETE banner pool in @references/ui-brand.md (fixes ready context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► FIXES READY ✓
+ GSDR > FIXES READY ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **Phase {X}: {Name}** — {N} gap(s) diagnosed, {M} fix plan(s) created

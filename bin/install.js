@@ -32,9 +32,14 @@ const PLUGIN_DIRS = [
   'dist',
 ];
 
+const COMPACT_LOGO = `
+  ▄▄ ▄▄▄ ▄▄▄ ▄▄▄
+  █▌ ▀▄▄ █▄▀ █▄▀
+  ▀▀ ▄▄▀ ▀ ▀ ▀ ▀`;
+
 function printHelp() {
-  console.log(`
-GSDR - GSD Reloaded: Autonomous spec-driven development for Claude Code
+  console.log(`${COMPACT_LOGO}
+  Autonomous builds that ship while you sleep.
 
 Usage:
   npx @leonaffi/gsdr@latest            Install GSDR
@@ -45,9 +50,8 @@ Installs to:
   ${PLUGIN_DIR}     (skills, agents, templates)
   ${COMMANDS_DIR}   (slash commands)
 
-After installation, just start Claude Code and run:
-  /gsdr:new-project
-`.trim());
+After installation, start Claude Code and run:
+  /gsdr:new-project`);
 }
 
 function copyDirRecursive(src, dest) {
@@ -66,12 +70,13 @@ function copyDirRecursive(src, dest) {
 }
 
 function install() {
-  console.log('Installing GSDR...');
+  console.log(COMPACT_LOGO);
+  console.log('  Get shit done. Autonomously.\n');
 
   // Verify source
   const missing = PLUGIN_DIRS.filter(dir => !fs.existsSync(path.join(SOURCE_DIR, dir)));
   if (missing.length > 0) {
-    console.error(`Error: Missing source directories: ${missing.join(', ')}`);
+    console.error(`  Well that didn't work.\n  Missing source directories: ${missing.join(', ')}`);
     process.exit(1);
   }
 
@@ -80,20 +85,24 @@ function install() {
   for (const dir of PLUGIN_DIRS) {
     const src = path.join(SOURCE_DIR, dir);
     const dest = path.join(PLUGIN_DIR, dir);
-    console.log(`  Copying ${dir}/...`);
+    console.log(`  Deploying ${dir}/...`);
     copyDirRecursive(src, dest);
   }
 
   // Copy commands to ~/.claude/commands/gsdr/ (auto-discovered by Claude Code)
   const commandsSrc = path.join(SOURCE_DIR, 'commands', PLUGIN_NAME);
   if (fs.existsSync(commandsSrc)) {
-    console.log('  Installing slash commands...');
+    console.log('  Arming slash commands...');
     copyDirRecursive(commandsSrc, COMMANDS_DIR);
   }
 
   console.log('');
-  console.log('GSDR installed! Start Claude Code and run:');
-  console.log('  /gsdr:new-project');
+  console.log('GSDR is live. You\'re dangerous now.');
+  console.log('');
+  console.log('  Next up:');
+  console.log('  Start Claude Code and run:');
+  console.log('    /gsdr:new-project');
+  console.log('');
 }
 
 function uninstall() {
@@ -112,9 +121,9 @@ function uninstall() {
   }
 
   if (removed) {
-    console.log('GSDR uninstalled.');
+    console.log('GSDR removed. We\'ll miss you.');
   } else {
-    console.log('GSDR is not installed.');
+    console.log('GSDR isn\'t here. Nothing to remove.');
   }
 }
 

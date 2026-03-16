@@ -13,6 +13,8 @@ Users currently hand-craft `/gsdr:quick` prompts for test generation after each 
 
 <required_reading>
 Read all files referenced by the invoking prompt's execution_context before starting.
+
+@${CLAUDE_SKILL_DIR}/../references/ui-brand.md
 </required_reading>
 
 <process>
@@ -65,10 +67,10 @@ This command works on completed phases. Run /gsdr:execute-phase first.
 ```
 Exit.
 
-Present banner:
+Display a stage banner. Pick randomly from the EXECUTING banner pool in @references/ui-brand.md (test generation context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► ADD TESTS — Phase ${phase_number}: ${phase_name}
+ {selected banner text} — Phase ${phase_number}: ${phase_name}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 </step>
@@ -280,9 +282,10 @@ For each approved E2E test:
 <step name="summary_and_commit">
 Create a test coverage report and present to user:
 
+Display a stage banner. Pick randomly from the PHASE COMPLETE banner pool in @references/ui-brand.md (test gen complete context):
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSDR ► TEST GENERATION COMPLETE
+ GSDR > TEST GENERATION COMPLETE ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## Results
