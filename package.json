@@ -20,6 +20,26 @@
     "references",
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonaffi-byte/gsdr.git"
+  },
+  "homepage": "https://github.com/leonaffi-byte/gsdr#readme",
+  "bugs": {
+    "url": "https://github.com/leonaffi-byte/gsdr/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "autonomous",
+    "spec-driven",
+    "development",
+    "plugin",
+    "agent",
+    "gsd"
+  ],
+  "author": "leonaffi-byte",
   "devDependencies": {
     "typescript": "^5.7.0",
     "esbuild": "^0.24.0",

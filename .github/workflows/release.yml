@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm test
+
+  publish-npm:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  github-release:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate changelog
+        id: changelog
+        run: |
+          PREV_TAG=$(git tag --sort=-version:refname | head -2 | tail -1)
+          if [ -z "$PREV_TAG" ] || [ "$PREV_TAG" = "${{ github.ref_name }}" ]; then
+            CHANGELOG=$(git log --oneline --no-merges | head -20)
+          else
+            CHANGELOG=$(git log --oneline --no-merges "${PREV_TAG}..HEAD")
+          fi
+          echo "changelog<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$CHANGELOG" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: |
+            ## Install
+
+            ```bash
+            # npm
+            npx gsdr
+
+            # Homebrew
+            brew tap leonaffi-byte/gsdr && brew install gsdr
+
+            # Scoop (Windows)
+            scoop bucket add gsdr https://github.com/leonaffi-byte/scoop-gsdr
+            scoop install gsdr
+
+            # curl
+            curl -fsSL https://raw.githubusercontent.com/leonaffi-byte/gsdr/master/install.sh | bash
+            ```
+
+            ## Changes
+
+            ${{ steps.changelog.outputs.changelog }}
+          generate_release_notes: true
