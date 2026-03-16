@@ -7,7 +7,7 @@
     Front-load 10 minutes of questions. Walk away. Come back to verified, working code.
   </p>
   <p align="center">
-    <a href="https://www.npmjs.com/package/gsdr"><img src="https://img.shields.io/npm/v/gsdr?style=flat-square&color=cb3837" alt="npm version"></a>
+    <a href="https://www.npmjs.com/package/@leonaffi/gsdr"><img src="https://img.shields.io/npm/v/@leonaffi/gsdr?style=flat-square&color=cb3837" alt="npm version"></a>
     <a href="https://github.com/leonaffi-byte/gsdr/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license"></a>
     <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen?style=flat-square" alt="node version"></a>
   </p>
@@ -48,7 +48,7 @@ You (10 min)          GSDR (autonomous)                    You (review)
 ### npm (recommended)
 
 ```bash
-npx gsdr
+npx @leonaffi/gsdr
 ```
 
 ### Homebrew (macOS/Linux)
@@ -83,7 +83,7 @@ irm https://raw.githubusercontent.com/leonaffi-byte/gsdr/master/install.ps1 | ie
 
 ```bash
 # 1. Install the plugin
-npx gsdr
+npx @leonaffi/gsdr
 
 # 2. Start Claude Code with the plugin
 claude --plugin-dir ~/.claude/plugins/local/gsdr
@@ -307,8 +307,8 @@ Use `/gsdr:settings` to configure interactively.
 
 ```bash
 # npm
-npx gsdr --uninstall
-npm uninstall -g gsdr
+npx @leonaffi/gsdr --uninstall
+npm uninstall -g @leonaffi/gsdr
 
 # Homebrew
 brew uninstall gsdr && brew untap leonaffi-byte/gsdr

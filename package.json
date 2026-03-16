@@ -1,5 +1,8 @@
 {
-  "name": "gsdr",
+  "name": "@leonaffi/gsdr",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "1.0.0",
   "description": "GSD Reloaded - Autonomous spec-driven development for Claude Code",
   "bin": {

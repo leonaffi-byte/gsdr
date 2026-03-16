@@ -33,8 +33,8 @@ if (-not $npmPath) {
 }
 
 # Install globally
-Write-Info "Installing gsdr via npm..."
-npm install -g gsdr
+Write-Info "Installing @leonaffi/gsdr via npm..."
+npm install -g @leonaffi/gsdr
 if ($LASTEXITCODE -ne 0) { Write-Fail "npm install failed" }
 
 # Run installer to set up Claude Code plugin

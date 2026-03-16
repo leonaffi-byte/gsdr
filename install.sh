@@ -41,8 +41,8 @@ if ! command -v npm &> /dev/null; then
 fi
 
 # Install globally
-info "Installing gsdr via npm..."
-npm install -g gsdr
+info "Installing @leonaffi/gsdr via npm..."
+npm install -g @leonaffi/gsdr
 
 # Run installer to set up Claude Code plugin
 info "Setting up Claude Code plugin..."
