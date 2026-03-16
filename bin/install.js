@@ -3,7 +3,7 @@
 /**
  * GSDR Install Script
  * Installs GSDR as a Claude Code plugin by copying plugin files
- * to the user's local plugins directory.
+ * and registering in Claude Code's plugin system.
  *
  * Usage:
  *   npx @leonaffi/gsdr@latest          # Install plugin
@@ -18,8 +18,12 @@ const path = require('path');
 const os = require('os');
 
 const PLUGIN_NAME = 'gsdr';
-const TARGET_DIR = path.join(os.homedir(), '.claude', 'plugins', 'local', PLUGIN_NAME);
+const PLUGIN_ID = 'gsdr@local';
+const CLAUDE_DIR = path.join(os.homedir(), '.claude');
+const TARGET_DIR = path.join(CLAUDE_DIR, 'plugins', 'local', PLUGIN_NAME);
 const SOURCE_DIR = path.join(__dirname, '..');
+const INSTALLED_PLUGINS_FILE = path.join(CLAUDE_DIR, 'plugins', 'installed_plugins.json');
+const SETTINGS_FILE = path.join(CLAUDE_DIR, 'settings.json');
 
 const DIRS_TO_COPY = [
   '.claude-plugin',
@@ -43,10 +47,8 @@ Usage:
 The plugin is installed to:
   ${TARGET_DIR}
 
-After installation, use Claude Code with:
-  claude --plugin-dir ${TARGET_DIR}
-
-Or run /gsdr:new-project to begin a new project.
+After installation, just start Claude Code and run:
+  /gsdr:new-project
 `.trim());
 }
 
@@ -70,8 +72,72 @@ function copyDirRecursive(src, dest) {
   }
 }
 
+function readJSON(filePath) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+function writeJSON(filePath, data) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n');
+}
+
+function getVersion() {
+  try {
+    const pkg = readJSON(path.join(SOURCE_DIR, 'package.json'));
+    return pkg ? pkg.version : '1.0.0';
+  } catch {
+    return '1.0.0';
+  }
+}
+
+function registerPlugin() {
+  const version = getVersion();
+  const now = new Date().toISOString();
+
+  // Register in installed_plugins.json
+  const installed = readJSON(INSTALLED_PLUGINS_FILE) || { version: 2, plugins: {} };
+  installed.plugins[PLUGIN_ID] = [
+    {
+      scope: 'user',
+      installPath: TARGET_DIR,
+      version: version,
+      installedAt: installed.plugins[PLUGIN_ID]?.[0]?.installedAt || now,
+      lastUpdated: now,
+    },
+  ];
+  writeJSON(INSTALLED_PLUGINS_FILE, installed);
+
+  // Enable in settings.json
+  const settings = readJSON(SETTINGS_FILE) || {};
+  if (!settings.enabledPlugins) {
+    settings.enabledPlugins = {};
+  }
+  settings.enabledPlugins[PLUGIN_ID] = true;
+  writeJSON(SETTINGS_FILE, settings);
+}
+
+function unregisterPlugin() {
+  // Remove from installed_plugins.json
+  const installed = readJSON(INSTALLED_PLUGINS_FILE);
+  if (installed && installed.plugins && installed.plugins[PLUGIN_ID]) {
+    delete installed.plugins[PLUGIN_ID];
+    writeJSON(INSTALLED_PLUGINS_FILE, installed);
+  }
+
+  // Remove from settings.json
+  const settings = readJSON(SETTINGS_FILE);
+  if (settings && settings.enabledPlugins && settings.enabledPlugins[PLUGIN_ID]) {
+    delete settings.enabledPlugins[PLUGIN_ID];
+    writeJSON(SETTINGS_FILE, settings);
+  }
+}
+
 function install() {
-  console.log(`Installing GSDR plugin...`);
+  console.log('Installing GSDR plugin...');
   console.log(`  Source: ${SOURCE_DIR}`);
   console.log(`  Target: ${TARGET_DIR}`);
   console.log('');
@@ -107,13 +173,17 @@ function install() {
     }
   }
 
+  // Register plugin in Claude Code
+  try {
+    registerPlugin();
+    console.log('  Registered in Claude Code');
+  } catch (err) {
+    console.error(`  Warning: Could not register plugin: ${err.message}`);
+    console.error('  You may need to add it manually with: claude --plugin-dir ' + TARGET_DIR);
+  }
+
   console.log('');
-  console.log(`GSDR plugin installed to ${TARGET_DIR}`);
-  console.log('');
-  console.log('To use with Claude Code:');
-  console.log(`  claude --plugin-dir ${TARGET_DIR}`);
-  console.log('');
-  console.log('Or add to your Claude Code settings, then run:');
+  console.log('GSDR installed! Just start Claude Code and run:');
   console.log('  /gsdr:new-project');
 }
 
@@ -126,6 +196,7 @@ function uninstall() {
   console.log(`Removing GSDR plugin from ${TARGET_DIR}...`);
   try {
     fs.rmSync(TARGET_DIR, { recursive: true, force: true });
+    unregisterPlugin();
     console.log('GSDR plugin removed successfully.');
   } catch (err) {
     console.error(`Error removing plugin: ${err.message}`);
