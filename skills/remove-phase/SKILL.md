@@ -1,5 +1,5 @@
 ---
-name: gsdr:remove-phase
+name: remove-phase
 description: "Remove unstarted phase and renumber"
 argument-hint: "<phase-number>"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

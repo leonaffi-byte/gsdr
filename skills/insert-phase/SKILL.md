@@ -1,5 +1,5 @@
 ---
-name: gsdr:insert-phase
+name: insert-phase
 description: "Insert decimal phase between existing phases"
 argument-hint: "<after> <description>"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

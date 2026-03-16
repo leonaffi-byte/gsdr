@@ -1,5 +1,5 @@
 ---
-name: gsdr:set-profile
+name: set-profile
 description: "Quick switch model profile for GSDR agents"
 argument-hint: "<quality|balanced|budget>"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

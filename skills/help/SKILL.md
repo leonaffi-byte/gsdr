@@ -1,5 +1,5 @@
 ---
-name: gsdr:help
+name: help
 description: "Show GSDR command reference"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---

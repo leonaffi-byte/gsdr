@@ -1,5 +1,5 @@
 ---
-name: gsdr:audit-milestone
+name: audit-milestone
 description: "Audit milestone completion against original intent"
 argument-hint: "[version]"
 context: fork

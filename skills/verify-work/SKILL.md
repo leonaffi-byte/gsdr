@@ -1,5 +1,5 @@
 ---
-name: gsdr:verify-work
+name: verify-work
 description: "Validate built features through conversational UAT"
 argument-hint: "[phase]"
 context: fork

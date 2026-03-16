@@ -1,5 +1,5 @@
 ---
-name: gsdr:plan-phase
+name: plan-phase
 description: "Create detailed phase plan (PLAN.md) with verification loop, or plan multiple phases in parallel"
 argument-hint: "[phase] [--auto] [--research] [--skip-research] [--prd filepath] [--milestone] [--all]"
 context: fork

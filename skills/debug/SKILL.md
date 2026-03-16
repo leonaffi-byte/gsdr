@@ -1,5 +1,5 @@
 ---
-name: gsdr:debug
+name: debug
 description: "Systematic debugging with persistent state across context resets"
 argument-hint: "[issue description]"
 context: fork

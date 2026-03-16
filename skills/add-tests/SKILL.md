@@ -1,5 +1,5 @@
 ---
-name: gsdr:add-tests
+name: add-tests
 description: "Generate tests for a completed phase"
 argument-hint: "<phase> [instructions]"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

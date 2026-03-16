@@ -1,5 +1,5 @@
 ---
-name: gsdr:settings
+name: settings
 description: "Configure workflow toggles and model profile"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---

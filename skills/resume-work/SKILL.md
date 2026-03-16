@@ -1,5 +1,5 @@
 ---
-name: gsdr:resume-work
+name: resume-work
 description: "Resume work from previous session with context restoration"
 context: fork
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Agent, Task

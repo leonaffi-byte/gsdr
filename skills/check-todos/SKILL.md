@@ -1,5 +1,5 @@
 ---
-name: gsdr:check-todos
+name: check-todos
 description: "List pending todos and select one to work on"
 argument-hint: "[area]"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

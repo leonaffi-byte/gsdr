@@ -1,5 +1,5 @@
 ---
-name: gsdr:add-phase
+name: add-phase
 description: "Add new phase to end of current milestone"
 argument-hint: "<description>"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

@@ -1,5 +1,5 @@
 ---
-name: gsdr:add-todo
+name: add-todo
 description: "Capture idea or task as todo"
 argument-hint: "[description]"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

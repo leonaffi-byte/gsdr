@@ -1,5 +1,5 @@
 ---
-name: gsdr:research-phase
+name: research-phase
 description: "Research a phase domain before planning"
 argument-hint: "[phase]"
 context: fork

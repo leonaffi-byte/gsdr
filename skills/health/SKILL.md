@@ -1,5 +1,5 @@
 ---
-name: gsdr:health
+name: health
 description: "Validate .planning/ directory integrity"
 argument-hint: "[--repair]"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

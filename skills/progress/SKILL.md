@@ -1,5 +1,5 @@
 ---
-name: gsdr:progress
+name: progress
 description: "Check project status and route to next action"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---

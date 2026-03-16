@@ -1,5 +1,5 @@
 ---
-name: gsdr:update
+name: update
 description: "Update GSDR to latest version"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---

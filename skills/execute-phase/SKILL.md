@@ -1,5 +1,5 @@
 ---
-name: gsdr:execute-phase
+name: execute-phase
 description: "Execute all plans in a phase, or orchestrate cross-phase milestone execution"
 argument-hint: "[phase] [--auto] [--gaps-only] [--milestone] [--all]"
 context: fork

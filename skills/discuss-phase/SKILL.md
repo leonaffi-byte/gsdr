@@ -1,5 +1,5 @@
 ---
-name: gsdr:discuss-phase
+name: discuss-phase
 description: "Capture design decisions for a phase before planning"
 argument-hint: "[phase]"
 context: fork

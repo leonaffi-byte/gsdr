@@ -1,5 +1,5 @@
 ---
-name: gsdr:plan-milestone-gaps
+name: plan-milestone-gaps
 description: "Create phases to close gaps identified by audit"
 context: fork
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Agent, Task

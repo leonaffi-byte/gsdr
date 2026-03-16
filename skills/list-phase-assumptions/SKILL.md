@@ -1,5 +1,5 @@
 ---
-name: gsdr:list-phase-assumptions
+name: list-phase-assumptions
 description: "Show Claude assumptions about a phase"
 argument-hint: "<phase>"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

@@ -1,5 +1,5 @@
 ---
-name: gsdr:new-project
+name: new-project
 description: "Initialize new project (questioning, research, requirements, roadmap)"
 argument-hint: "[--auto @idea.md]"
 context: fork

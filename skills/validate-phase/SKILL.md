@@ -1,5 +1,5 @@
 ---
-name: gsdr:validate-phase
+name: validate-phase
 description: "Audit Nyquist validation gaps for a phase"
 argument-hint: "<phase>"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep

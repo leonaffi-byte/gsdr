@@ -1,5 +1,5 @@
 ---
-name: gsdr:new-milestone
+name: new-milestone
 description: "Start a new milestone cycle for existing project"
 argument-hint: "[name]"
 context: fork

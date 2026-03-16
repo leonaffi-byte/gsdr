@@ -1,5 +1,5 @@
 ---
-name: gsdr:reapply-patches
+name: reapply-patches
 description: "Reapply local patches after GSDR update"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---

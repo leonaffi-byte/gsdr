@@ -1,5 +1,5 @@
 ---
-name: gsdr:pause-work
+name: pause-work
 description: "Create context handoff when pausing work"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---

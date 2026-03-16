@@ -1,5 +1,5 @@
 ---
-name: gsdr:map-codebase
+name: map-codebase
 description: "Map existing codebase for brownfield projects"
 context: fork
 agent: gsdr-codebase-mapper

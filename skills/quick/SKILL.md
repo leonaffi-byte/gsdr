@@ -1,5 +1,5 @@
 ---
-name: gsdr:quick
+name: quick
 description: "Execute small ad-hoc tasks with GSDR guarantees"
 argument-hint: "[--discuss] [--full] [description]"
 context: fork

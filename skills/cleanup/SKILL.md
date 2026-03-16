@@ -1,5 +1,5 @@
 ---
-name: gsdr:cleanup
+name: cleanup
 description: "Archive phase directories from completed milestones"
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
