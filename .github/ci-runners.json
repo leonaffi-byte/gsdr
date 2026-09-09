@@ -1,0 +1,20 @@
+{
+  "_note": "Presets for ci-runners (~/.claude/bin/ci-runners). Unset variables fall back to the label written in each workflow. Ubicloud needs the GitHub App to have access to this repo.",
+  "presets": {
+    "ubicloud": {
+      "CI_LINUX": "\"ubicloud-standard-4\"",
+      "CI_WINDOWS": "\"windows-latest\"",
+      "CI_MACOS": "\"macos-latest\""
+    },
+    "github": {
+      "CI_LINUX": "\"ubuntu-latest\"",
+      "CI_WINDOWS": "\"windows-latest\"",
+      "CI_MACOS": "\"macos-latest\""
+    },
+    "vms": {
+      "CI_LINUX": "[\"self-hosted\",\"Linux\",\"lytly-linux-vm\"]",
+      "CI_WINDOWS": "[\"self-hosted\",\"Windows\",\"lytly-win-vm\"]",
+      "CI_MACOS": "\"macos-latest\""
+    }
+  }
+}
